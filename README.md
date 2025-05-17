@@ -1,6 +1,6 @@
 # Flutter SSL Bypass
 
-This repo provides a simple Frida script to disable SSL certificate validation in Flutter-based Android applications. It works by hooking into the native certificate verification function inside `libflutter.so`.
+This repo provides a simple Frida script to disable SSL certificate validation in Android applications based on flutter . It works by hooking into the native certificate verification function inside `libflutter.so`.
 
 
 ### Usage
