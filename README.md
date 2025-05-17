@@ -6,10 +6,10 @@ This repo provides a simple Frida script to disable SSL certificate validation i
 ### Usage
 #### 1. Configure Burp Suite
 - Listen to all interfaces on port 8083 (or any of your choice).
-![image](https://github.com/user-attachments/assets/ef856bd7-500a-4ddc-badd-085633719f02)
+![image](https://github.com/user-attachments/assets/9d7aee04-1b88-4912-9d23-2845034c759e)
 
 - Check ✅ "Support invisible proxying"
-![image](https://github.com/user-attachments/assets/03920520-a342-4c0d-9175-ba57406e5be8)
+![image](https://github.com/user-attachments/assets/4e179ccb-5a4d-4baf-b7f1-d89c75be745a)
 #### 2. Redirect Android Traffic to Burp
 On your rooted Android device or emulator, execute the following commands:
 ```bash
