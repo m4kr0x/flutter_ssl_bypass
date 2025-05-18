@@ -1,17 +1,23 @@
-function hookVerifyCert() {
-    var base = Process.findModuleByName("libflutter.so").base;
-    var offset = 0x2084644;  // Change this value
-    var addr = base.add(offset);
+function waitForFlutterAndHook() {
+    var moduleName = "libflutter.so";
+    var interval = setInterval(function () {
+        var module = Process.findModuleByName(moduleName);
+        if (module !== null) {
+            clearInterval(interval);
 
-    console.log("[*] Hooking function at: " + addr);
+            var offset = 0x2084644; // Change this value
+            var addr = module.base.add(offset);
+            console.log("[*] Hook function at: " + addr);
 
-    Interceptor.attach(addr, {
-        onLeave: function (retval) {
-            console.log("[*] Original retval: " + retval);
-            retval.replace(0x1); // force true
-            console.log("[+] SSL certificate validation bypassed");
+            Interceptor.replace(addr, new NativeCallback(function () {
+                console.log("[+] SSL cert bypassed ");
+                return 1;
+            }, 'int', []));
+        } else {
+            console.log("[*] Waiting for libflutter.so...");
         }
-    });
+    }, 500);
 }
 
-setTimeout(hookVerifyCert, 1000);
+setImmediate(waitForFlutterAndHook);
+
