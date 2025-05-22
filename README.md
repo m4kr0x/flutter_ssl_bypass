@@ -15,14 +15,17 @@ On your rooted Android device or emulator, execute the following commands:
 ```bash
 adb shell
 su
-iptables -t nat -A OUTPUT -p tcp --dport 443 -j DNAT --to-destination Burp_IP:Burp_Port
-iptables -t nat -A OUTPUT -p tcp --dport 80 -j DNAT --to-destination Burp_IP:Burp_Port
+iptables -t nat -A OUTPUT -p tcp -j DNAT --to-destination Burp_IP:Burp_Port
 ```
 > Replace Burp_IP and Burp_Port with the actual IP and port you set in Burp Suite.
 #### 3. Update the Script Offset
 You must locate the offset for the function `ssl_crypto_x509_session_verify_cert_chain` inside `libflutter.so`. 
 > Refer to the 📖 [Full Article](https://m4kr0x.medium.com/flutter-tls-bypass-how-to-intercept-https-traffic-when-all-other-frida-scripts-fail-bd3d04489088) to learn how to extract this using Ghidra.
 
+then update the offset in `flutter_SSL_Bypass.js`
+```
+var offset = 0x2084644; // Change this value
+```
 #### 4. Run the Frida Script
 Once you've updated the offset, execute the script using Frida 
 ```bash
