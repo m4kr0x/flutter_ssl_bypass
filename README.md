@@ -2,7 +2,7 @@
 
 A simple Frida script to disable SSL certificate validation in Android applications based on flutter . It works by hooking into the native certificate verification function inside `libflutter.so`.
 
-> Tested on AVD with android 11 based on x86_64
+> Tested on AVD and genymotion with android 11 based on x86_64
 ### Usage
 #### 1. Configure Burp Suite
 - Listen to all interfaces on port 8083 (or any of your choice).
