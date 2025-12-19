@@ -20,7 +20,7 @@ iptables -t nat -A OUTPUT -p tcp -j DNAT --to-destination Burp_IP:Burp_Port
 > Replace Burp_IP and Burp_Port with the actual IP and port you set in Burp Suite.
 #### 3. Update the Script Offset
 You must locate the offset for the function `ssl_crypto_x509_session_verify_cert_chain` inside `libflutter.so`. 
-> Refer to the 📖 [Full Article](https://m4kr0x.medium.com/flutter-tls-bypass-how-to-intercept-https-traffic-when-all-other-frida-scripts-fail-bd3d04489088) to learn how to extract this using Ghidra.
+> Refer to the 📖 [Full Article](https://m4kr0.vercel.app/posts/android-pentest/flutter-ssl-bypass-how-to-intercept-https-traffic-when-all-other-frida-scripts-fail/) to learn how to extract this using Ghidra.
 
 then update the offset in `flutter_SSL_Bypass.js`
 ```
